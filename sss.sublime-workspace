@@ -35,7 +35,7 @@
 			"file": "index.jsx",
 			"settings":
 			{
-				"buffer_size": 882,
+				"buffer_size": 817,
 				"line_ending": "Windows",
 				"name": "index.js"
 			}
@@ -44,7 +44,7 @@
 			"file": "react/Account/login.jsx",
 			"settings":
 			{
-				"buffer_size": 957,
+				"buffer_size": 956,
 				"line_ending": "Windows",
 				"name": "login.jsx"
 			}
@@ -207,7 +207,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 882,
+						"buffer_size": 817,
 						"regions":
 						{
 						},
@@ -236,7 +236,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 957,
+						"buffer_size": 956,
 						"regions":
 						{
 						},

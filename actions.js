@@ -13,12 +13,9 @@ var c = {
 var methods = {
   account: {
     login: function(username, password) {
+      console.log(username);
       this.dispatch(c.ACCOUNT.LOGIN, {
-        name: name,
-        description: desc,
-        ingredients: ingredients,
-        directions: directions,
-        preventTransition: preventTransition
+        name: username
       });
     },
 

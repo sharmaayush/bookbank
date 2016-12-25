@@ -1,20 +1,49 @@
-
-var React = require('react');
-var Fluxxor = require("fluxxor");
-
-
-import {Login} from "./react/index.jsx";
-import { Router, Route, Link, browserHistory  } from 'react-router'
+var React = require("react"),
+    Router = require("react-router"),
+    Route = Router.Route,
+    DefaultRoute = Router.DefaultRoute;
+var RouteHandler = Router.RouteHandler;
 
 
+var Login =  require ("./react/index.jsx");
+var SignUp =  require ("./react/index.jsx");
+
+var EmptyView = React.createClass({
+  render: function() {
+    return <RouteHandler {...this.props} />;
+  }
+});
 
 
-
+/*
 export default <Router history={browserHistory}>
     <Route path="/" component={Login}>
       <Route path="*" component={PageNotFound} />
     </Route>
-  </Router>
+    
+  </Router>*/
+
+var routes = (
+  <Route handler={EmptyView} name="home" path="/">
+     <Route handler={SignUp} name="signUp" path="signUp" />
+    <DefaultRoute handler={Login} />
+  </Route>
+);
+
+/*
+  <Route handler={RecipeAdder} name="add-recipe" path="/recipe/add" />
+
+    <Route handler={EmptyView} path="/recipe/:id">
+      <Route handler={RecipeEditor} name="edit-recipe" path="edit" />
+      <DefaultRoute handler={Recipe} name="recipe" />
+    </Route>
+*/
+/*var routes = (
+  <Route path="/" component={Login}>
+      <Route path="*" component={PageNotFound} />
+  </Route>
+);
+*/
 
 
 
@@ -31,3 +60,6 @@ class PageNotFound extends React.Component {
     )
   }
 }
+
+
+module.exports = routes;

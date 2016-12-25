@@ -15,10 +15,8 @@ var AppStore = Fluxxor.createStore({
     );
   },
 
-  handleLogin: function() {
-    return Object.keys(this.recipes).map(function(key) {
-      return this.recipes[key];
-    }.bind(this));
+  handleLogin: function(payload) {
+    console.log(payload);
   },
 
   handleSignUp: function(id) {

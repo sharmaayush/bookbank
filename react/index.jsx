@@ -1,3 +1,6 @@
 var React = require("react");
-export {Login} from "./Account/Login.jsx"
+var Login =  require ("./Account/Login.jsx");
+export {SignUp} from "./Account/signUp.jsx"
+
+module.exports = Login;
 

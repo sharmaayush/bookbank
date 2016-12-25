@@ -1,14 +1,15 @@
-var ReactDOM = require('react-dom');
-var React = require('react');
-var Router = require("react-router");
+var React = require("react"),
+    Router = require("react-router"),
+    Route = Router.Route,
+    DefaultRoute = Router.DefaultRoute;
 
 import {Login} from "./react/index.jsx";
 var Fluxxor = require ('fluxxor');
 
 var actions = require("./actions");
-import routes from './routes';
+var routes = require("./routes.js");
 var
-    RecipeStore = require("./stores/app_store"),
+    AppStore = require("./stores/app_store"),
     RouteStore = require("./stores/route_store.jsx");
 
 
@@ -19,11 +20,12 @@ var
 var router = Router.create({routes: routes});
 
 var stores = {
-  app: new RecipeStore(),
-  route: new RouteStore({router: router})
+  app: new AppStore(),
+  route: new RouteStore({router: routes})
 };
 
 var flux = new Fluxxor.Flux(stores, actions.methods);
+
 flux.on("dispatch", function(type, payload) {
   console.log("Dispatch:", type, payload);
 });
