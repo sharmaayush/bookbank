@@ -5,8 +5,7 @@ var React = require("react"),
 var RouteHandler = Router.RouteHandler;
 
 
-var Login =  require ("./react/index.jsx");
-var SignUp =  require ("./react/index.jsx");
+var App =  require ("./react/index.jsx");
 
 var EmptyView = React.createClass({
   render: function() {
@@ -25,8 +24,10 @@ export default <Router history={browserHistory}>
 
 var routes = (
   <Route handler={EmptyView} name="home" path="/">
-     <Route handler={SignUp} name="signUp" path="signUp" />
-    <DefaultRoute handler={Login} />
+     <Route handler={App.SignUp} name="signUp" path="signUp" />
+     <DefaultRoute handler={App.Login} />
+     <Route handler={App.Dashboard} name="dashboard" path="dashboard">
+     </Route>  
   </Route>
 );
 

@@ -3,7 +3,6 @@ var React = require("react"),
     Route = Router.Route,
     DefaultRoute = Router.DefaultRoute;
 
-import {Login} from "./react/index.jsx";
 var Fluxxor = require ('fluxxor');
 
 var actions = require("./actions");

@@ -1,4 +1,5 @@
-var c = {
+var Ajax = require ("./Ajax");
+var constants = {
   ACCOUNT: {
     LOGIN: "ACCOUNT:LOGIN",
     SIGNUP: "ACCOUNT:SIGNUP",
@@ -14,13 +15,24 @@ var methods = {
   account: {
     login: function(username, password) {
       console.log(username);
-      this.dispatch(c.ACCOUNT.LOGIN, {
+      var requestData = {'username' : username, 'password': password};
+      var options = {
+        data : requestData,
+        url : '/login'
+      }
+      Ajax (options, (data) =>{
+        console.log(data);
+        window.location.hash = "dashboard"
+      }, (data) =>{
+
+      })
+      this.dispatch(constants.ACCOUNT.LOGIN, {
         name: username
       });
     },
 
     signUp: function(id, name, desc, ingredients, directions) {
-      this.dispatch(c.ACCOUNT.SIGNUP, {
+      this.dispatch(constants.ACCOUNT.SIGNUP, {
         id: id,
         name: name,
         description: desc,
@@ -32,12 +44,12 @@ var methods = {
 
   routes: {
     transition: function(path, params) {
-      this.dispatch(c.ROUTE.TRANSITION, {path: path, params: params});
+      this.dispatch(constants.ROUTE.TRANSITION, {path: path, params: params});
     }
   }
 };
 
 module.exports = {
   methods: methods,
-  constants: c
+  constants: constants
 };
