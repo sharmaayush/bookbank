@@ -19,8 +19,8 @@ var AppStore = Fluxxor.createStore({
     console.log(payload);
   },
 
-  handleSignUp: function(id) {
-    return this.recipes[id] || NOT_FOUND_TOKEN;
+  handleSignUp: function() {
+    //return this.recipes[id] || NOT_FOUND_TOKEN;
   },
 
   handleRemoveRecipe: function(id) {

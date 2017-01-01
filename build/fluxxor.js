@@ -28004,30 +28004,36 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var methods = {
 	  account: {
-	    login: function login(username, password) {
-	      console.log(username);
-	      var requestData = { 'username': username, 'password': password };
+	    login: function login(email, password) {
+	      var requestData = { 'email': email, 'password': password };
 	      var options = {
 	        data: requestData,
 	        url: '/login'
 	      };
 	      Ajax(options, function (data) {
-	        console.log(data);
+	        console.log(JSON.stringify(data));
+	        alert(data.error.text);
 	        window.location.hash = "dashboard";
 	      }, function (data) {});
 	      this.dispatch(constants.ACCOUNT.LOGIN, {
-	        name: username
+	        //name: username
 	      });
 	    },
 	
-	    signUp: function signUp(id, name, desc, ingredients, directions) {
-	      this.dispatch(constants.ACCOUNT.SIGNUP, {
-	        id: id,
-	        name: name,
-	        description: desc,
-	        ingredients: ingredients,
-	        directions: directions
-	      });
+	    signUp: function signUp(email, password, phone) {
+	
+	      var requestData = { 'email': email, 'password': password, 'phone': phone };
+	      var options = {
+	        data: requestData,
+	        url: '/signup'
+	      };
+	      Ajax(options, function (data) {
+	        console.log(JSON.stringify(data));
+	        window.location.hash = "login";
+	        alert(data.error.text);
+	      }, function (data) {});
+	
+	      this.dispatch(constants.ACCOUNT.SIGNUP, {});
 	    }
 	  },
 	
@@ -28050,44 +28056,39 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 	
 	var Ajax = function Ajax(options, onSuccess, onError) {
-	  var domain = 'http://67.128.69.51/';
+	  var domain = 'http://api.hamarabookbank.com';
 	
 	  var url = domain + options.url;
 	  var requestData = options.data;
 	  var apiTimeout = 20000;
+	  var requestData = options.data;
+	  console.log(JSON.stringify(options.data));
 	
-	  setTimeout(function () {
-	    return onSuccess(options.data);
-	  }, 1000);
-	
-	  /* $.ajax({
-	     url: url,
-	     type: 'POST',
-	     contentType: 'application/json',
-	     crossDomain: true,
-	     timeout: apiTimeout,
-	     beforeSend: function(xhr) {
-	   
-	     },
+	  $.ajax({
+	    url: url,
+	    type: 'POST',
+	    contentType: 'application/json',
+	    crossDomain: true,
+	    timeout: apiTimeout,
+	    beforeSend: function beforeSend(xhr) {},
 	    // xhrFields: {
-	     //  withCredentials: true
-	     //},
-	     cache: false,
-	     dataType: 'json',
-	     data: JSON.stringify(requestData),
-	     success: function(responseData,  textStatus, errorThrown){
-	       return onSuccess (responseData,  textStatus, errorThrown)
-	       
-	     },
-	     error:function(jqXHR, textStatus, errorThrown) {
-	       return onError (jqXHR, textStatus, errorThrown);
-	     },
-	     complete: function(){
-	      setTimeout(function(){
-	         //$('#loading').hide();
-	      }, 1000); 
-	     }
-	   }); */
+	    //  withCredentials: true
+	    //},
+	    cache: false,
+	    dataType: 'json',
+	    data: JSON.stringify(requestData),
+	    success: function success(responseData, textStatus, errorThrown) {
+	      return onSuccess(responseData, textStatus, errorThrown);
+	    },
+	    error: function error(jqXHR, textStatus, errorThrown) {
+	      return onError(jqXHR, textStatus, errorThrown);
+	    },
+	    complete: function complete() {
+	      setTimeout(function () {
+	        //$('#loading').hide();
+	      }, 1000);
+	    }
+	  });
 	};
 	
 	module.exports = Ajax;
@@ -28243,7 +28244,27 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  onSubmit: function onSubmit(e) {
 	    e.preventDefault();
-	    this.getFlux().actions.account.login({ 'username': this.state.username, 'password': this.state.password });
+	    if (!this.state.username) {
+	      this.error('emailId', "EmailId is mandatory");
+	      return false;
+	    }
+	    if (!this.state.password) {
+	      this.error('password', "Password is mandatory");
+	      return false;
+	    }
+	    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,4}))$/;
+	    if (!this.state.username.match(re)) {
+	      this.error('emailId', "Invalid email Id");
+	      return false;
+	    }
+	    this.getFlux().actions.account.login(this.state.username, this.state.password);
+	  },
+	
+	  error: function error(id, message) {
+	    $('.' + id).addClass('wrong-entry');
+	    $('.alert').text(message);
+	    $('.alert').fadeIn(500);
+	    setTimeout("$('.alert').fadeOut(1500);", 3000);
 	  },
 	
 	  render: function render() {
@@ -28259,21 +28280,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	      ),
 	      React.createElement(
 	        "div",
-	        { className: "form-group " },
+	        { className: "form-group log-status emailId" },
 	        React.createElement("input", { type: "text", className: "form-control", placeholder: "Email Id ", id: "emailId", onChange: this._setUserName }),
 	        React.createElement("i", { className: "fa fa-user" })
 	      ),
 	      React.createElement(
 	        "div",
-	        { className: "form-group log-status" },
+	        { className: "form-group log-status password" },
 	        React.createElement("input", { type: "password", className: "form-control", placeholder: "Password", id: "passwod", onChange: this._setPassword }),
 	        React.createElement("i", { className: "fa fa-lock" })
 	      ),
-	      React.createElement(
-	        "span",
-	        { className: "alert" },
-	        "Invalid Credentials"
-	      ),
+	      React.createElement("span", { className: "alert" }),
 	      React.createElement(
 	        "a",
 	        { className: "link", href: "#" },
@@ -28295,10 +28312,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	
 	  _setUserName: function _setUserName(e) {
+	    $('.emailId').removeClass('wrong-entry');
 	    this.setState({ username: e.target.value });
 	  },
 	
 	  _setPassword: function _setPassword(e) {
+	    $('.password').removeClass('wrong-entry');
 	    this.setState({ password: e.target.value });
 	  },
 	  _goToSignUp: function _goToSignUp(e) {
@@ -28315,12 +28334,69 @@ return /******/ (function(modules) { // webpackBootstrap
 	"use strict";
 	
 	var React = __webpack_require__(1);
+	var Fluxxor = __webpack_require__(194);
 	var Router = __webpack_require__(157),
 	    Link = Router.Link,
 	    Navigation = Router.Navigation;
 	
 	var SignUp = React.createClass({
 	  displayName: "SignUp",
+	
+	  mixins: [Fluxxor.FluxMixin(React), Fluxxor.StoreWatchMixin("app"), Navigation],
+	
+	  getStateFromFlux: function getStateFromFlux() {
+	    var flux = this.getFlux();
+	    return {};
+	  },
+	
+	  getInitialState: function getInitialState() {
+	    return {
+	      'username': '',
+	      'phone': '',
+	      'password': '',
+	      'confirmPassword': ''
+	    };
+	  },
+	
+	  onSubmit: function onSubmit(e) {
+	    e.preventDefault();
+	    if (!this.state.username) {
+	      this.error('emailId', "EmailId is mandatory");
+	      return false;
+	    }
+	    if (!this.state.phone) {
+	      this.error('phone', "Mobile number is mandatory");
+	      return false;
+	    }
+	    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,4}))$/;
+	    if (!this.state.username.match(re)) {
+	      this.error('emailId', "Invalid email Id");
+	      return false;
+	    }
+	
+	    if (!this.state.password || !this.state.confirmPassword) {
+	      this.error('password', "Password is mandatory");
+	      return false;
+	    }
+	    if (!this.state.confirmPassword) {
+	      this.error('confirmPassword', "Password is mandatory");
+	      return false;
+	    }
+	
+	    if (this.state.password != this.state.confirmPassword) {
+	      this.error('password', "Password do not match");
+	      return false;
+	    }
+	
+	    this.getFlux().actions.account.signUp(this.state.username, this.state.password, this.state.phone);
+	  },
+	
+	  error: function error(id, message) {
+	    $('.' + id).addClass('wrong-entry');
+	    $('.alert').text(message);
+	    $('.alert').fadeIn(500);
+	    setTimeout("$('.alert').fadeOut(1500);", 3000);
+	  },
 	
 	  render: function render() {
 	    return React.createElement(
@@ -28332,41 +28408,63 @@ return /******/ (function(modules) { // webpackBootstrap
 	        "Sign Up"
 	      ),
 	      React.createElement(
+	        "strong",
+	        { className: "back-btn" },
+	        "Back"
+	      ),
+	      React.createElement(
 	        "div",
-	        { className: "form-group " },
-	        React.createElement("input", { type: "text", className: "form-control", placeholder: "Email Id ", id: "emailId" }),
+	        { className: "form-group log-status emailId" },
+	        React.createElement("input", { type: "text", className: "form-control", placeholder: "Email Id ", id: "emailId", onChange: this._setUserName }),
 	        React.createElement("i", { className: "fa fa-user" })
 	      ),
 	      React.createElement(
 	        "div",
-	        { className: "form-group mobile" },
-	        React.createElement("input", { type: "password", className: "form-control", placeholder: "Mobile Number", id: "mobile" }),
+	        { className: "form-group log-status phone" },
+	        React.createElement("input", { type: "password", className: "form-control", placeholder: "Mobile Number", id: "phone", onChange: this._setphone }),
 	        React.createElement("i", { className: "fa fa fa-mobile" })
 	      ),
 	      React.createElement(
 	        "div",
-	        { className: "form-group" },
-	        React.createElement("input", { type: "password", className: "form-control", placeholder: "password", id: "password" }),
+	        { className: "form-group log-status password" },
+	        React.createElement("input", { type: "password", className: "form-control", placeholder: "password", id: "password", onChange: this._setPassword }),
 	        React.createElement("i", { className: "fa fa-lock" })
 	      ),
 	      React.createElement(
 	        "div",
-	        { className: "form-group" },
-	        React.createElement("input", { type: "password", className: "form-control", placeholder: "Confirm password", id: "confirmPassword" }),
+	        { className: "form-group log-status confirmPassword" },
+	        React.createElement("input", { type: "password", className: "form-control", placeholder: "Confirm password", id: "confirmPassword", onChange: this._setConfirmPassword }),
 	        React.createElement("i", { className: "fa fa-lock" })
 	      ),
-	      React.createElement(
-	        "span",
-	        { className: "alert" },
-	        "Invalid Credentials"
-	      ),
+	      React.createElement("span", { className: "alert" }),
 	      React.createElement(
 	        "button",
-	        { type: "button", className: "log-btn signup-btn", id: "confirm" },
+	        { type: "button", className: "log-btn signup-btn", id: "confirm", onClick: this.onSubmit },
 	        "Confirm"
 	      )
 	    );
+	  },
+	
+	  _setUserName: function _setUserName(e) {
+	    $('.emailId').removeClass('wrong-entry');
+	    this.setState({ username: e.target.value });
+	  },
+	
+	  _setphone: function _setphone(e) {
+	    $('.phone').removeClass('wrong-entry');
+	    this.setState({ phone: e.target.value });
+	  },
+	
+	  _setPassword: function _setPassword(e) {
+	    $('.password, .confirmPassword').removeClass('wrong-entry');
+	    this.setState({ password: e.target.value });
+	  },
+	
+	  _setConfirmPassword: function _setConfirmPassword(e) {
+	    $('.password, .confirmPassword').removeClass('wrong-entry');
+	    this.setState({ confirmPassword: e.target.value });
 	  }
+	
 	});
 	
 	module.exports = SignUp;
@@ -28419,8 +28517,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    console.log(payload);
 	  },
 	
-	  handleSignUp: function handleSignUp(id) {
-	    return this.recipes[id] || NOT_FOUND_TOKEN;
+	  handleSignUp: function handleSignUp() {
+	    //return this.recipes[id] || NOT_FOUND_TOKEN;
 	  },
 	
 	  handleRemoveRecipe: function handleRemoveRecipe(id) {

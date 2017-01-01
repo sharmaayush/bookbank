@@ -1,16 +1,13 @@
 var Ajax = function(options, onSuccess, onError){
-    var domain = 'http://67.128.69.51/';
+    var domain = 'http://api.hamarabookbank.com';
 
     var url = domain+options.url;
     var requestData = options.data;
     var apiTimeout = 20000;
-
-    
-        setTimeout(function(){
-        		return onSuccess (options.data)
-           }, 1000); 
-        
-       /* $.ajax({
+    var requestData = options.data;
+    console.log(JSON.stringify(options.data));
+ 
+        $.ajax({
           url: url,
           type: 'POST',
           contentType: 'application/json',
@@ -37,7 +34,7 @@ var Ajax = function(options, onSuccess, onError){
               //$('#loading').hide();
            }, 1000); 
           }
-        }); */
+        });
 }
   
 module.exports = Ajax;

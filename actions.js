@@ -13,31 +13,41 @@ var constants = {
 
 var methods = {
   account: {
-    login: function(username, password) {
-      console.log(username);
-      var requestData = {'username' : username, 'password': password};
+    login: function(email, password) {
+      var requestData = {'email' : email, 'password': password};
       var options = {
         data : requestData,
         url : '/login'
       }
       Ajax (options, (data) =>{
-        console.log(data);
+        console.log(JSON.stringify(data));
+        alert(data.error.text);
         window.location.hash = "dashboard"
       }, (data) =>{
 
       })
       this.dispatch(constants.ACCOUNT.LOGIN, {
-        name: username
+        //name: username
       });
     },
 
-    signUp: function(id, name, desc, ingredients, directions) {
+    signUp: function(email, password, phone) {
+
+    var requestData = {'email' : email, 'password': password, 'phone':phone};
+      var options = {
+        data : requestData,
+        url : '/signup'
+      }
+      Ajax (options, (data) =>{
+        console.log(JSON.stringify(data));
+        window.location.hash = "login";
+        alert(data.error.text);
+      }, (data) =>{
+
+      })
+
       this.dispatch(constants.ACCOUNT.SIGNUP, {
-        id: id,
-        name: name,
-        description: desc,
-        ingredients: ingredients,
-        directions: directions
+        
       });
     }
   },
