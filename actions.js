@@ -32,29 +32,42 @@ var methods = {
     },
 
     signUp: function(email, password, phone) {
+      var requestData = {'email' : email, 'password': password, 'phone':phone};
+        var options = {
+          data : requestData,
+          url : '/signup'
+        }
+        Ajax (options, (data) =>{
+          console.log(JSON.stringify(data));
+          window.location.hash = "login";
+          alert(data.error.text);
+        }, (data) =>{
 
-    var requestData = {'email' : email, 'password': password, 'phone':phone};
-      var options = {
-        data : requestData,
-        url : '/signup'
-      }
-      Ajax (options, (data) =>{
-        console.log(JSON.stringify(data));
-        window.location.hash = "login";
-        alert(data.error.text);
-      }, (data) =>{
+        })
 
-      })
+        this.dispatch(constants.ACCOUNT.SIGNUP, {
+          
+        });
+    },
+    
+    activate: (token)=>{
+      console.log (token);
+    },
 
-      this.dispatch(constants.ACCOUNT.SIGNUP, {
-        
-      });
-    }
+    forgetPassword : (email, token, newPass) => {
+       var requestData = {'email' : email, 'password': newPass, 'token':token};
+       var options = {
+          data : requestData,
+          url : '/forgetpassword'
+        }
+       console.log(requestData);
+    } 
+
   },
 
   routes: {
-    transition: function(path, params) {
-      this.dispatch(constants.ROUTE.TRANSITION, {path: path, params: params});
+    transition: function(path, params, query) {
+      this.dispatch(constants.ROUTE.TRANSITION, {path: path, params: params, query});
     }
   }
 };

@@ -13,9 +13,9 @@ var RouteStore = Fluxxor.createStore({
 
   handleRouteTransition: function(payload) {
     var path = payload.path,
-        params = payload.params;
-
-    this.router.transitionTo(path, params);
+        params = payload.params,
+        query = payload.query;
+    this.router.transitionTo(path, params,query);
   }
 });
 

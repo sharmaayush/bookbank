@@ -20,7 +20,7 @@ var router = Router.create({routes: routes});
 
 var stores = {
   app: new AppStore(),
-  route: new RouteStore({router: routes})
+  route: new RouteStore({router: router})
 };
 
 var flux = new Fluxxor.Flux(stores, actions.methods);
