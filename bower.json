@@ -1,6 +1,6 @@
 {
   "name": "application",
-  "description": "",
+  "description": "Bower ",
   "main": "index.js",
   "license": "ISC",
   "homepage": "https://github.com/sharmaayush/bookbank",

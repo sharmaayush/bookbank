@@ -19,12 +19,16 @@ export default <Router history={browserHistory}>
     <Route path="/" component={Login}>
       <Route path="*" component={PageNotFound} />
     </Route>
-    
-  </Router>*/
+    ForgetPassStep2
+  </Router>*/ 
 
 var routes = (
   <Route handler={EmptyView} name="home" path="/">
      <Route handler={App.SignUp} name="signUp" path="signUp" />
+     <Route handler={App.ActivateProfile} name="activateProfile" path="activateProfile" />
+     <Route handler={App.ForgetPassStep1} name="forgetPassStep1" path="forgetPassStep1" />
+     <Route handler={App.ForgetPassStep2} name="forgetPassStep2" path="forgetPassStep2" />
+
      <DefaultRoute handler={App.Login} />
      <Route handler={App.Dashboard} name="dashboard" path="dashboard">
      </Route>  
