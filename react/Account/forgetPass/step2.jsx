@@ -32,10 +32,9 @@ var Step2 =  React.createClass({
 
   onSubmit : function (e) {
   	var params = this.context.router.getCurrentParams();
-  	debugger;
-  	var emailId = params.id;
+  	var emailId = params.emailId;
      e.preventDefault ();
-     this.getFlux().actions.account.forgetPassword (emailId, this.state.activationToken, this.state.password);
+     this.getFlux().actions.account.forgetPasswordStep2 (this.state.activationToken, this.state.password, emailId);
   },
 
 

@@ -25,9 +25,9 @@ export default <Router history={browserHistory}>
 var routes = (
   <Route handler={EmptyView} name="home" path="/">
      <Route handler={App.SignUp} name="signUp" path="signUp" />
-     <Route handler={App.ActivateProfile} name="activateProfile" path="activateProfile" />
+     <Route handler={App.ActivateProfile} name="activateProfile" path="activateProfile/:emailId" />
      <Route handler={App.ForgetPassStep1} name="forgetPassStep1" path="forgetPassStep1" />
-     <Route handler={App.ForgetPassStep2} name="forgetPassStep2" path="forgetPassStep2" />
+     <Route handler={App.ForgetPassStep2} name="forgetPassStep2" path="forgetPassStep2/:emailId" />
 
      <DefaultRoute handler={App.Login} />
      <Route handler={App.Dashboard} name="dashboard" path="dashboard">

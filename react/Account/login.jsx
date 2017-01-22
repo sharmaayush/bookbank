@@ -73,7 +73,7 @@ var Login =  React.createClass({
             <span className="alert">ghgjhghgjhg</span>
             <Link className="link" to="forgetPassStep1">Forgot your password?</Link>
             <button type="button" className="log-btn" id="login" onClick = {this.onSubmit}>Log in</button>
-            <button type="button" className="log-btn signup-btn" id="signUp" onClick={() => this.transitionTo('signUp')}>Sign In</button>     
+            <button type="button" className="log-btn signup-btn" id="signUp" onClick={() => this.transitionTo('signUp')}>Sign Up</button>     
         </div>
       </div>  
     );

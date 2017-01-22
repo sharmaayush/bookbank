@@ -33,8 +33,10 @@ var ActivateProfile =  React.createClass({
        // this.error('emailId', "EmailId is mandatory");
         return false;
       }
+      var params = this.context.router.getCurrentParams();
+      var emailId = params.emailId;
       
-      this.getFlux().actions.account.activate (this.state.email);
+      this.getFlux().actions.account.activate (emailId, this.state.email);
   },
 
 

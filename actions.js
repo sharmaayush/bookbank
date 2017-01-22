@@ -1,4 +1,5 @@
 var Ajax = require ("./Ajax");
+
 var constants = {
   ACCOUNT: {
     LOGIN: "ACCOUNT:LOGIN",
@@ -41,12 +42,14 @@ var methods = {
       var options = {
         data : requestData,
         url : '/signup'
-      }
+      };
+      var _this = this;
       Ajax (options, (data) =>{
         console.log(JSON.stringify(data));
 
         if(data.code == "000"){
-          window.location.hash = "/";
+         // window.location.hash = "/";
+         _this.flux.actions.routes.transition('activateProfile',{"emailId":email});
           alert(data.success.text);
         }else{
           alert(data.error.text);
@@ -54,30 +57,98 @@ var methods = {
         
       }, (data) =>{
 
-        this.dispatch(constants.ACCOUNT.SIGNUP, {
+        _this.dispatch(constants.ACCOUNT.SIGNUP, {
           
         });
     })
     },
     
-    activate: (token)=>{
-      console.log (token);
+    activate: function (email, otp){
+      var requestData = {'email' : email, 'otp': otp};
+      console.log (email, otp);
+      var options = {
+        data : requestData,
+        url : '/activate_profile'
+      };
+      console.log(requestData)
+      var _this = this;
+      Ajax (options, (data) =>{
+        console.log(JSON.stringify(data));
+
+        if(data.code == "000"){
+         // window.location.hash = "/";
+         _this.flux.actions.routes.transition('home',{});
+          alert(data.success.text);
+        }else{
+          alert(data.error.text);
+        }
+        
+      }, (data) =>{
+
+        _this.dispatch(constants.ACCOUNT.SIGNUP, {
+          
+        });
+    })
     },
 
-    forgetPassword : (email, token, newPass) => {
-       var requestData = {'email' : email, 'password': newPass, 'token':token};
+    forgetPasswordStep1 : function (email){
+     // debugger;
+     //$('#error_container').bs_alert(email);
+     var _this = this;
+     var requestData = {'email' : email};
        var options = {
           data : requestData,
-          url : '/forgetpassword'
+          url : '/send_otp'
+        }
+        Ajax (options, (data) =>{
+            console.log(JSON.stringify(data));
+
+            if(data.code == "000"){
+             // window.location.hash = "/";
+              _this.flux.actions.routes.transition('forgetPassStep2',{"emailId":email})
+              alert(data.success.text);
+            }else{
+              alert(data.error.text);
+            }
+            
+          }, (data) =>{
+
+           // _this.dispatch(constants.ACCOUNT.SIGNUP, {
+              
+            });
+    },
+
+    forgetPasswordStep2 : (token, newPass, email) => {
+       var requestData = {'email' : email, 'password': newPass, 'otp':token};
+       var options = {
+          data : requestData,
+          url : '/forgot_password'
         }
        console.log(requestData);
-    } 
 
+       var _this = this;
+        Ajax (options, (data) =>{
+            console.log(JSON.stringify(data));
+            debugger;
+            if(data.code == "000"){
+                window.location.hash = "/";
+              //_this.flux.actions.routes.transition('home',{});  cant say why its not working here
+              alert(data.success.text);
+            }else{
+              alert(data.error.text);
+            }
+            
+          }, (data) =>{
+
+           // _this.dispatch(constants.ACCOUNT.SIGNUP, {
+              
+            });
+      }
   },
 
   routes: {
-    transition: function(path, params, query) {
-      this.dispatch(constants.ROUTE.TRANSITION, {path: path, params: params, query});
+    transition: function(path, query) {
+      this.dispatch(constants.ROUTE.TRANSITION, {path: path, query: query});
     }
   }
 };

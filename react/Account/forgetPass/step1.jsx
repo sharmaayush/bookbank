@@ -33,8 +33,9 @@ var Step1 =  React.createClass({
        // this.error('emailId', "EmailId is mandatory");
         return false;
       }
-      
-      this.getFlux().actions.routes.transition ("forgetPassStep2", "forgetPassStep2", {"email" : this.state.email});
+      //this.context.router.transitionTo("forgetPassStep2", {emailId: this.state.email});
+
+      this.getFlux().actions.account.forgetPasswordStep1 (this.state.email);
   },
 
 

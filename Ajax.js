@@ -23,10 +23,17 @@ var Ajax = function(options, onSuccess, onError){
           dataType: 'json',
           data: JSON.stringify(requestData),
           success: function(responseData,  textStatus, errorThrown){
+            console.log(responseData);
+            try {
+              responseData =  JSON.parse(responseData);
+              return onSuccess (responseData,  textStatus, errorThrown)
+            } catch(e) {
             return onSuccess (responseData,  textStatus, errorThrown)
+            }
             
           },
           error:function(jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR)
             return onError (jqXHR, textStatus, errorThrown);
           },
           complete: function(){
