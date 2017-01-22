@@ -55,21 +55,27 @@ var Login =  React.createClass({
 
   render : function() {
     return (
-      <div className="login-form">
-         <h1>Humara Book Bank</h1>
-         <div className="form-group log-status emailId">
-           <input type="email" className="form-control" placeholder="Email Id " id="emailId"  onChange = {this._setUserName} />
-           <i className="fa fa-user"></i>
-         </div>
-         <div className="form-group log-status password">
-           <input type="password" className="form-control" placeholder="Password" id="passwod" onChange = {this._setPassword}  />
-           <i className="fa fa-lock"></i>
-         </div>
-          <span className="alert"></span>
-          <Link className="link" to="forgetPassStep1">Forgot your password?</Link>
-         <button type="button" className="log-btn" id="login" onClick = {this.onSubmit}>Log in</button>
-         <button type="button" className="log-btn signup-btn" id="signUp" onClick={() => this.transitionTo('signUp')}>Sign In</button>     
-      </div>
+      <div id="loginPage">
+        <div className="col-xs-12">
+          <a className="app-logo">
+          <div className="app-logo--img"></div>
+          </a>
+          </div> 
+        <div className="login-form">
+          <div className="form-group log-status emailId">
+            <input type="email" className="form-control" placeholder="Email Id " id="emailId"  onChange = {this._setUserName} />
+            <i className="fa fa-user"></i>
+          </div>
+          <div className="form-group log-status password">
+            <input type="password" className="form-control" placeholder="Password" id="passwod" onChange = {this._setPassword}  />
+            <i className="fa fa-lock"></i>
+          </div>
+            <span className="alert">ghgjhghgjhg</span>
+            <Link className="link" to="forgetPassStep1">Forgot your password?</Link>
+            <button type="button" className="log-btn" id="login" onClick = {this.onSubmit}>Log in</button>
+            <button type="button" className="log-btn signup-btn" id="signUp" onClick={() => this.transitionTo('signUp')}>Sign In</button>     
+        </div>
+      </div>  
     );
   },
 

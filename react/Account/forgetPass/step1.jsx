@@ -41,7 +41,8 @@ var Step1 =  React.createClass({
   render : function() {
     return (
       <div className="login-form">
-         <h2> Enter Registered Email-id</h2>
+         <h2 className="headerH2">Forgot Password</h2>
+         <p>Enter your registered Email Id</p>
          <div className="form-group log-status emailId">
            <input type="text" className="form-control" placeholder="Email-id"   onChange = {this._setEmail} />
            <i className="fa fa-user"></i>

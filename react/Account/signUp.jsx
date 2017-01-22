@@ -72,8 +72,7 @@ error: function(id, message){
     return (
 
       <div className="login-form">
-        <h1>Sign Up</h1>
-        
+        <h1 className="headerH2">Sign Up</h1>
         <div className="form-group log-status emailId">
           <input type="email" className="form-control" placeholder="Email Id " id="emailId" onChange = {this._setUserName}/>
           <i className="fa fa-user" />
