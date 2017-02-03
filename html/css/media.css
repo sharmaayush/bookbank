@@ -1,0 +1,117 @@
+@media only screen
+and (min-width : 320px)
+and (max-width : 480px) {
+
+.content-container{padding: 20% 10% 0% 10%;}
+
+table#cart tbody td{ display: block; padding: .6rem; min-width:300px;}
+}  
+@media only screen
+and (min-width : 320px)
+and (max-width : 640px) {
+table#cart tbody td{ display: block; padding: .6rem; min-width:300;}
+table#cart tbody td .form-control{
+    width:20%;
+    display: inline !important;
+  }
+  .actions .btn{
+    width:36%;
+    margin:1.5em 0;
+  }
+  
+  .actions .btn-info{
+    float:left;
+  }
+  .actions .btn-danger{
+    float:right;
+  }
+  
+  table#cart thead { display: none; }
+
+  table#cart tbody tr td:first-child { background: #333; color: #fff; }
+  table#cart tbody td:before {
+    content: attr(data-th); font-weight: bold;
+    display: inline-block; width: 8rem;
+  }
+  
+  
+  
+  table#cart tfoot td{display:block; }
+  table#cart tfoot td .btn{display:block;}
+} 
+
+@media only screen
+and (min-width : 641px){
+
+}
+
+
+@media only screen
+and (min-width : 768px){
+
+    table#cart tbody td .form-control{
+    width:20%;
+    display: inline !important;
+  }
+  .actions .btn{
+    width:36%;
+    margin:1.5em 0;
+  }
+  
+  .actions .btn-info{
+    float:left;
+  }
+  .actions .btn-danger{
+    float:right;
+  }
+  
+  table#cart thead { display: none; }
+  table#cart tbody td { display: block; padding: .6rem; min-width:320px;}
+  table#cart tbody tr td:first-child { background: #333; color: #fff; }
+  table#cart tbody td:before {
+    content: attr(data-th); font-weight: bold;
+    display: inline-block; width: 8rem;
+  }
+  
+  
+  
+  table#cart tfoot td{display:block; }
+  table#cart tfoot td .btn{display:block;}
+/*For iPad Air*/
+.content-container{padding:10%;}
+body{ font-size: 18px;}
+.main-menu li{font-size:130%;}
+nav.nav-header{ width: 450px; left: -450px;}
+.nav-expanded nav.nav-header{-webkit-transform: translateX(420px) translate3d(0, 0, 0);transform: translateX(420px)}
+.nav-expanded .wrapper{ -webkit-transform: translateX(420px) translate3d(0, 0, 0);transform: translateX(420px) translate3d(0, 0, 0);}
+.main-menu li .home_icon{font-size: 35px;}
+.main-menu li a span.logout_icon{font-size: 35px;}
+.app-new .sending-money__steps-counter a small{ font-size:20px;}
+
+
+
+}
+
+
+@media only screen
+and (min-width : 960px){
+
+
+}
+
+@media only screen
+and (min-width : 1200px){
+
+}
+
+
+@media  screen and (min-width: 360px)   {
+   @media  screen and  (min-height: 615px) and (max-height: 639px) {
+
+
+ 
+   
+   }
+}
+
+/*Media Query By Poonam End*/
