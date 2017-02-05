@@ -5,7 +5,7 @@ var React = require("react"),
 var RouteHandler = Router.RouteHandler;
 
 
-var App =  require ("./react/index.jsx");
+var App =  require ("./react");
 
 var EmptyView = React.createClass({
   render: function() {
