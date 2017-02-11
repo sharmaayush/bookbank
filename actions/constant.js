@@ -7,7 +7,9 @@ var constants = {
   DASHBOARD :{
           BOOK  :"DASHBOARD:BOOK"
   },
-
+  CART :{
+     UPDATE : "UPDATE"
+  },
   ROUTE: {
     TRANSITION: "ROUTE:TRANSITION"
   }

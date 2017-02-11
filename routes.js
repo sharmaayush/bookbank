@@ -18,7 +18,7 @@ var EmptyView = React.createClass({
 export default <Router history={browserHistory}>
     <Route path="/" component={Login}>
       <Route path="*" component={PageNotFound} />
-    </Route>
+    </Route> Order
     ForgetPassStep2
   </Router>*/ 
 
@@ -28,7 +28,7 @@ var routes = (
      <Route handler={App.ActivateProfile} name="activateProfile" path="activateProfile/:emailId" />
      <Route handler={App.ForgetPassStep1} name="forgetPassStep1" path="forgetPassStep1" />
      <Route handler={App.ForgetPassStep2} name="forgetPassStep2" path="forgetPassStep2/:emailId" />
-
+     <Route handler={App.Cart} name="order" path="order" />
      <DefaultRoute handler={App.Login} />
      <Route handler={App.Dashboard} name="dashboard" path="dashboard">
      </Route>  

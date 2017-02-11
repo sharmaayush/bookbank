@@ -9,10 +9,12 @@ var AppStore = Fluxxor.createStore({
     console.log(storeData)
     this.userId = 0;
     this.book = storeData.book,
+    this.cart =[],
     this.bindActions(
       actions.constants.ACCOUNT.LOGIN, this.handleLogin,
       actions.constants.ACCOUNT.SIGNUP, this.handleSignUp,
-      actions.constants.DASHBOARD.BOOK,  this.handleBookData
+      actions.constants.DASHBOARD.BOOK,  this.handleBookData,
+      actions.constants.CART.UPDATE,  this.updateCart
     );
   },
 
@@ -28,6 +30,11 @@ var AppStore = Fluxxor.createStore({
     this.book = $.extend(this.book,  payload.obj)
     console.log(payload)
     this.emit("change");
+  },
+
+  updateCart: function (item) {
+     this.cart.push (item)
+     this.emit("change");
   }
 });
 

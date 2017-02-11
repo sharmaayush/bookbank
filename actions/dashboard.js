@@ -15,7 +15,7 @@ var dashboard  = function () {
 						        if(data.code == "000"){
 						          var obj = {}
 						          if (data.hasOwnProperty('data')) {
-						          	   obj =  $.extend({}, data.data, {"NOT_FOUND" : false,"SEARCHING" : false});
+						          	   obj =  $.extend({}, {"NOT_FOUND" : false,"SEARCHING" : false, "book" : data.data});
 						          		
 						          } else {
 										obj =  $.extend({}, {"NOT_FOUND" : true,"SEARCHING" : false});

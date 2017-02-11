@@ -3,13 +3,14 @@
 //var ActivateProfile = require ("./Account/activateProfile.jsx");
 var Dashboard =  require ("./Dashboard");
 var Account = require ("./Account")
-
+var Order = require ("./Order")
 module.exports = {
 	                "Login" : Account.Login ,
 	                "SignUp": Account.SignUp,
 	                "Dashboard" : Dashboard.Dashboard ,
 	                "ActivateProfile" : Account.ActivateProfile,
 	                "ForgetPassStep1" : Account.ForgetPassStep1,
-	                "ForgetPassStep2" : Account.ForgetPassStep2
+	                "ForgetPassStep2" : Account.ForgetPassStep2,
+	                "Cart" : Order.Cart
 	              }
 
