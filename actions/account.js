@@ -8,6 +8,8 @@ var account = function () {
       Ajax (options, (data) =>{
         if(data.code == "000"){
           window.location.hash = "dashboard";
+          localStorage.setItem('token', data.data.token)
+          localStorage.setItem('email', email)
         }else{
           alert(data.error.text);
         }      

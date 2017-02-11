@@ -5,7 +5,7 @@
 		[
 			[
 				"di",
-				"div	Tag"
+				"div\tTag"
 			],
 			[
 				"re",
@@ -15,40 +15,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "webpack.config.js",
-			"settings":
-			{
-				"buffer_size": 545,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "react/index.jsx",
-			"settings":
-			{
-				"buffer_size": 73,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "index.jsx",
-			"settings":
-			{
-				"buffer_size": 817,
-				"line_ending": "Windows",
-				"name": "index.js"
-			}
-		},
-		{
-			"file": "react/Account/login.jsx",
-			"settings":
-			{
-				"buffer_size": 956,
-				"line_ending": "Windows",
-				"name": "login.jsx"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -94,12 +60,18 @@
 	},
 	"expanded_folders":
 	[
-		"/H/application",
-		"/H/application/react",
-		"/H/application/react/Account"
+		"/E/developer/bookbank",
+		"/E/developer/bookbank/react",
+		"/E/developer/bookbank/react/Account",
+		"/E/developer/bookbank/react/Account/forgetPass"
 	],
 	"file_history":
 	[
+		"/E/developer/bookbank/react/Account/activateProfile.jsx",
+		"/E/developer/bookbank/react/Account/login.jsx",
+		"/E/developer/bookbank/index.jsx",
+		"/E/developer/bookbank/webpack.config.js",
+		"/E/developer/bookbank/react/index.jsx",
 		"/H/application/index.html",
 		"/C/Users/hp/AppData/Roaming/Sublime Text 3/Packages/User/Plain text.sublime-settings",
 		"/H/application/.gitignore",
@@ -140,127 +112,8 @@
 	"groups":
 	[
 		{
-			"selected": 3,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "webpack.config.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 545,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								471,
-								471
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "react/index.jsx",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 73,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								43,
-								43
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "index.jsx",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 817,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"auto_name": "index.js",
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "react/Account/login.jsx",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 956,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"auto_name": "login.jsx",
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],

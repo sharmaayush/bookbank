@@ -18,6 +18,7 @@ var Dashboard = React.createClass({
   getStateFromFlux: function() {
     var flux = this.getFlux();
     return {
+      "book" : flux.store("app").book
     };
   },
 
@@ -49,6 +50,8 @@ var Dashboard = React.createClass({
 
       },
 render: function() {
+    var book = this.state.book
+    var NOT_FOUND = this.state.book.NOT_FOUND
     return (
             	<div id="page">
                     <div className="main-content">
@@ -83,15 +86,15 @@ render: function() {
                             </div></header>
                         </div>
                         <div id="mask" />
-                          <div class="content-container">
-                            <div class="row">
+                          <div className="content-container">
+                            <div className="row">
                                 <h2>Stylish Search Box</h2>
                                 <div id="custom-search-input">
-                                    <div class="input-group col-md-12">
-                                      <input type="text" class="  search-query form-control" placeholder="Search" onChange ={this._setSearchText} />
-                                      <span class="input-group-btn">
-                                        <button class="btn btn-danger" type="button" onClick = {this.onSubmit}>
-                                            <span class=" glyphicon glyphicon-search"></span>
+                                    <div className="input-group col-md-12">
+                                      <input type="text" className="  search-query form-control" placeholder="Search" onChange ={this._setSearchText} />
+                                      <span className="input-group-btn">
+                                        <button className="btn btn-danger" type="button" onClick = {this.onSubmit}>
+                                            <span className=" glyphicon glyphicon-search"></span>
                                         </button>
                                       </span>
                                     </div>
@@ -99,6 +102,9 @@ render: function() {
                             </div>
                           </div>
                         </div>
+                        {NOT_FOUND ? "book not found" : ""}
+                        {book.bookName}
+                        {book.description}
                     </div>
       </div>
     );
