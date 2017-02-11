@@ -1,13 +1,13 @@
 @media only screen
-and (min-width : 319px)
-and (max-width : 359px) {
- .app-logo--img{height: 150px; width: 130px; }
+and (min-width : 320px)
+and (max-width : 480px) {
+
 .content-container{padding: 20% 10% 0% 10%;}
 
 table#cart tbody td{ display: block; padding: .6rem; min-width:300px;}
 }  
 @media only screen
-and (min-width : 360px)
+and (min-width : 320px)
 and (max-width : 640px) {
 table#cart tbody td{ display: block; padding: .6rem; min-width:300;}
 table#cart tbody td .form-control{
@@ -35,7 +35,7 @@ table#cart tbody td .form-control{
   }
   
   
-  .app-logo--img{height: 270px; width: 170px; }
+  
   table#cart tfoot td{display:block; }
   table#cart tfoot td .btn{display:block;}
 } 
@@ -87,7 +87,9 @@ nav.nav-header{ width: 450px; left: -450px;}
 .main-menu li .home_icon{font-size: 35px;}
 .main-menu li a span.logout_icon{font-size: 35px;}
 .app-new .sending-money__steps-counter a small{ font-size:20px;}
-.app-logo--img{ width:215px; height:220px; }
+
+
+
 }
 
 

@@ -676,8 +676,9 @@ a:active {
     width: 130px;
 }
 .headerH2 {
-    color: #000000;
+    color: #ccc;
     text-align: center;
+    font-family: 'Vibur', cursive;
     font-size: 40px;
 }
 .content-container {
