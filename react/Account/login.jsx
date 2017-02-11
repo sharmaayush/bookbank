@@ -70,7 +70,7 @@ var Login =  React.createClass({
             <input type="password" className="form-control" placeholder="Password" id="passwod" onChange = {this._setPassword}  />
             <i className="fa fa-lock"></i>
           </div>
-            <span className="alert">ghgjhghgjhg</span>
+            <span className="alert"></span>
             <Link className="link" to="forgetPassStep1">Forgot your password?</Link>
             <button type="button" className="log-btn" id="login" onClick = {this.onSubmit}>Log in</button>
             <button type="button" className="log-btn signup-btn" id="signUp" onClick={() => this.transitionTo('signUp')}>Sign Up</button>     

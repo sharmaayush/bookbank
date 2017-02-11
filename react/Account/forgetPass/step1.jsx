@@ -30,12 +30,19 @@ var Step1 =  React.createClass({
   onSubmit : function (e) {
      e.preventDefault ();
       if(!this.state.email){
-       // this.error('emailId', "EmailId is mandatory");
+       this.error('emailId', "EmailId is mandatory");
         return false;
       }
       //this.context.router.transitionTo("forgetPassStep2", {emailId: this.state.email});
 
       this.getFlux().actions.account.forgetPasswordStep1 (this.state.email);
+  },
+
+  error: function(id, message){
+    $('.' + id).addClass('wrong-entry');
+     $('.alert').text(message);
+     $('.alert').fadeIn(500);
+     setTimeout( "$('.alert').fadeOut(1500);",3000 );
   },
 
 
@@ -57,7 +64,7 @@ var Step1 =  React.createClass({
   },
 
   _setEmail : function(e) {
-   // $('.emailId').removeClass('wrong-entry');
+    $('.emailId').removeClass('wrong-entry');
     this.setState ({email : e.target.value})
   }
 });
