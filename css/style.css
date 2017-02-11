@@ -771,3 +771,25 @@ a:active {
 { 
     margin-right: 8px !important; 
 }
+
+.search_section_ul {
+    background-color: #fff;
+    padding: 0px;
+    margin: 0px;
+}
+.search_section_li {
+    width: 100%;
+    list-style: none;
+    padding: 2% 5% 2% 5%;
+     border-radius: 0 0 4px 4px;
+    border-bottom: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+}
+.search_section_li span {
+    font-size: 22px
+}
+.search_section_li div{
+     color: #a3a3a3
+}
